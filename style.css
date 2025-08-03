@@ -1,0 +1,308 @@
+body {
+    background: linear-gradient(135deg, #ffd3ec, #c9e4ff);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding-top: 100px;
+    color: #333;
+    transition: background 0.5s;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#message {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#danceArea {
+    margin-bottom: 15px;
+    min-height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 공통 댄서 모양 */
+.dancer {
+    position: relative;
+    width: 75px;
+    height: 120px;
+}
+
+.dancer-head {
+    width: 40px;
+    height: 40px;
+    background: #FFD180;
+    border-radius: 50%;
+    position: absolute;
+    left: 18px;
+    top: 0;
+    border: 2px solid #f1a660;
+    z-index: 2;
+}
+
+.dancer-body {
+    width: 18px;
+    height: 45px;
+    background: #60A3FF;
+    position: absolute;
+    left: 29px;
+    top: 40px;
+    border-radius: 15px;
+    z-index: 1;
+}
+
+/* 팔, 다리는 동작마다 다르게 애니메이션 지정 */
+.dancer-arm,
+.dancer-leg {
+    position: absolute;
+    border-radius: 10px;
+    z-index: 0;
+    transform-origin: top center;
+}
+
+.dancer-arm {
+    width: 12px;
+    height: 45px;
+    background: #FFD180;
+    top: 40px;
+}
+
+.dancer-leg {
+    width: 12px;
+    height: 45px;
+    background: #3949AB;
+    top: 82px;
+}
+
+/* 위치(좌우) */
+.dancer-arm.left {
+    left: 4px;
+}
+
+.dancer-arm.right {
+    left: 59px;
+}
+
+.dancer-leg.left {
+    left: 16px;
+}
+
+.dancer-leg.right {
+    left: 47px;
+}
+
+/* ----------- 동작 애니메이션 ----------- */
+
+/* 1. 흔들기 */
+.dance1 .dancer-head {
+    animation: shakeHead 0.5s infinite alternate;
+}
+
+.dance1 .dancer-arm.left {
+    animation: waveLeftArm 0.6s infinite alternate;
+}
+
+.dance1 .dancer-arm.right {
+    animation: waveRightArm 0.6s infinite alternate;
+}
+
+.dance1 .dancer-leg.left {
+    animation: tapLeftLeg 0.7s infinite alternate;
+}
+
+.dance1 .dancer-leg.right {
+    animation: tapRightLeg 0.7s infinite alternate;
+}
+
+/* 2. 점프 */
+.dance2 .dancer {
+    animation: jumpBody 0.5s infinite alternate;
+}
+
+/* 3. 회전 */
+.dance3 .dancer {
+    animation: spin 1.2s infinite linear;
+}
+
+/* 4. 양팔 번쩍 */
+.dance4 .dancer-arm.left {
+    animation: armUpLeft 0.5s infinite alternate;
+}
+
+.dance4 .dancer-arm.right {
+    animation: armUpRight 0.5s infinite alternate;
+}
+
+/* 5. 다리 교차 스텝 */
+.dance5 .dancer-leg.left {
+    animation: crossLeftLeg 0.6s infinite alternate;
+}
+
+.dance5 .dancer-leg.right {
+    animation: crossRightLeg 0.6s infinite alternate;
+}
+
+
+/* ------ keyframes ------ */
+
+/* 흔들기 */
+@keyframes shakeHead {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(7px);
+    }
+}
+
+@keyframes waveLeftArm {
+    from {
+        transform: rotate(-35deg);
+    }
+
+    to {
+        transform: rotate(-85deg) translateY(-14px);
+    }
+}
+
+@keyframes waveRightArm {
+    from {
+        transform: rotate(35deg);
+    }
+
+    to {
+        transform: rotate(85deg) translateY(-14px);
+    }
+}
+
+@keyframes tapLeftLeg {
+    from {
+        transform: rotate(-10deg);
+    }
+
+    to {
+        transform: rotate(-30deg);
+    }
+}
+
+@keyframes tapRightLeg {
+    from {
+        transform: rotate(10deg);
+    }
+
+    to {
+        transform: rotate(30deg);
+    }
+}
+
+/* 점프 */
+@keyframes jumpBody {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-30px);
+    }
+}
+
+/* 회전 */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* 양팔 번쩍 */
+@keyframes armUpLeft {
+    from {
+        transform: rotate(-30deg);
+    }
+
+    to {
+        transform: rotate(-120deg) translateY(-18px);
+    }
+}
+
+@keyframes armUpRight {
+    from {
+        transform: rotate(30deg);
+    }
+
+    to {
+        transform: rotate(120deg) translateY(-18px);
+    }
+}
+
+/* 다리 교차 */
+@keyframes crossLeftLeg {
+    from {
+        transform: rotate(-10deg);
+    }
+
+    to {
+        transform: rotate(-50deg) translateX(12px);
+    }
+}
+
+@keyframes crossRightLeg {
+    from {
+        transform: rotate(10deg);
+    }
+
+    to {
+        transform: rotate(50deg) translateX(-12px);
+    }
+}
+
+#secretMsg {
+    font-size: 1.15em;
+    color: #bc78fa;
+    margin-top: 20px;
+    display: none;
+}
+
+button {
+    background-color: #ff80b5;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 6px 3px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff559c;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 6px;
+    border: 1px solid #e2e2e2;
+    width: 60%;
+    margin: 0 4px 14px 0;
+    outline: none;
+}

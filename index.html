@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>기분 업 시켜주는 페이지</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🌈 오늘의 칭찬 🌈</h1>
+        <p id="message">너 진짜 최고야! 😎</p>
+        <div id="danceArea"></div>
+        <div>
+            <button onclick="showRandomMessage()">다른 칭찬 듣기</button>
+            <button onclick="showRandomDance()">오늘의 댄스 보기</button>
+            <button onclick="changeBackground()">배경 바꾸기</button>
+            <button onclick="showSecretMessage()">비밀 메시지</button>
+        </div>
+        <div style="margin-top:20px;">
+            <input type="text" id="customMessage" placeholder="직접 칭찬 적어봐!">
+            <button onclick="addCustomMessage()">추가하기</button>
+        </div>
+        <div id="secretMsg"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
